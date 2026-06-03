@@ -1,14 +1,13 @@
 {
   "name": "petstoreapi-tests",
   "version": "1.0.0",
-  "description": "",
+  "description": "API tests for a Pet Store",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/martinprs/PetStoreAPI-Tests.git"
   },
   "license": "ISC",
   "type": "module",
-  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
