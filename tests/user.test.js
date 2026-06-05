@@ -70,6 +70,46 @@ describe("User tests", () => {
         });
     });
 
+    describe("GET /user/login", () => {
+        test("logs in user", async () => {
+            const response = await axios.get(
+                `${BASE_URL}/user/login`,
+                {
+                    params: {
+                        username: username,
+                        password: "Skibidi"
+                    }
+                }
+            );
+
+            expect(response.status).toBe(200);
+            expect(response.data).toBeDefined();
+            expect(response.data.toString()).toContain("logged in");
+        });
+
+        test("wrong password", async () => {
+            try {
+                await axios.get(`${BASE_URL}/user/login`, {
+                    params: {
+                        username: username,
+                        password: "Skibidi123"
+                    }
+                });
+            } catch (error) {
+                expect(error.response.status).toBe(400);
+            }
+        });
+    });
+
+    describe("GET /user/logout", () => {
+        test("logs out user", async () => {
+            const response = await axios.get(`${BASE_URL}/user/logout`);
+
+            expect(response.status).toBe(200);
+            expect(response.data).toBeDefined();
+        });
+    });
+
     describe("DELETE /user/{username}", () => {
         test("deletes the user", async () => {
             const response = await axios.delete(`${BASE_URL}/user/${username}`);
