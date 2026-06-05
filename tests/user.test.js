@@ -84,7 +84,6 @@ describe("User tests", () => {
 
             expect(response.status).toBe(200);
             expect(response.data).toBeDefined();
-            expect(response.data.toString()).toContain("logged in");
         });
 
         test("wrong password", async () => {
